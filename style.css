@@ -3,10 +3,11 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+
 }
 body {
   background-color: #f7f9fd;
-}
+  }
 .wrapper {
   width: 90%;
   font-size: 16px;
@@ -50,7 +51,7 @@ body {
 .container input:focus {
   border-color: #587ef4;
 }
-.total-amount-container,
+.shopping-amount-container,
 .user-amount-container {
   background-color: #ffffff;
   padding: 1.25em 0.9em;
@@ -141,4 +142,5 @@ body {
     grid-template-columns: 1fr;
     gap: 1em;
   }
+  
 }

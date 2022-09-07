@@ -56,39 +56,26 @@ const grocerylist = (itemName, itemValue) => {
  grocerylistContent.appendChild(deleteButton);
   document.getElementById("list").appendChild(grocerylistContent);
 };
-{
-$(document).ready(function(){
-  $.ajax({
-    url: 'https://www.fruityvice.com/api/fruit/all',
-    type:"GET",
-    success:function(result){
-      console.log(result)
-    },
-    error:function(err){
-      console.log(err);
-    }
-  })
-})
-}
+const init = () => {
+  inputForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const input = document.querySelector('input#searchByName');
+    console.log(input.value);
 
-getGroceries().then(response=>{
-  console.log(response);
-})
-let userData = {
-  "id" : 'user1234',
-  "name" : 'John',
-  "email" : 'user1234@gmail.com'
-}
-searchAmountButton.addEventListener("click", myFunction);
-function myFunction(){
-  alert("i was clicked!")
-}
- // index.js
-user.profile = () => {
-  const data = { users: [] }
-  // Create 1000 users
-  for (let i = 0; i < 1000; i++) {
-    data.users.push({ id: i, name: `user${i}` })
+    fetch('"https://api.bestbuy.com/v1/Groceries/id.json?show=sku,name,salePrice&apiKey=YourAPIKey"')
+    .then(response => response.json())
+    .then(data => {
+      const crypto = document.querySelector('section#cryptoDetails h4');
+      const cryptovalue = document.querySelector('section#cryptoDetails p');
+      console.log(data);
+      crypto.innerText = data.crypto;
+      cryptovalue.innerText = data.cryptovalue;
+    });
+    
+      document.getElementById(searchAmount).onclick = displayPrice;
+      function displayPrice(){
+document.getElementById("cost").innerHTML = Prices();
+      }
+    });
   }
-  return data
-}
+

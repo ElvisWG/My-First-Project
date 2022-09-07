@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!--creating a user profile to either login or register-->
+    <section>
+   <!--creating a user profile to either login or register-->
     <div style="background-color:grey;margin: 1%;width: 15%;padding: 1%;float:left;">
-      <form method="post">
+     <form method="post">
           <div style="font-size: 20px;margin: 1%;color: whitesmoke;">Login</div>
           <div>
               <label for="uname" style="font-size: 10px;color: black;"><b>Username</b></label>
@@ -19,7 +20,7 @@
           <input type="submit" value="Login" style="border-right: 10px;height:fit-content;  width: 50%;color: whitesmoke;background-color: black;border: solid gold;"><br><br>
       </form>
   </div>
-  <div style="background-color:grey;margin: 1%;width: 15%;padding: 1%;float:left;">
+  <div style="background-color:grey;margin: 1%;width: 15%;padding: 1%;float: left -1px;;">
       <form method="post">
           <div style="font-size: 20px;margin: 1%;color: white;">Register</div>
           <div>
@@ -32,12 +33,13 @@
           </div>
           <input type="submit" value="Login" style="border-radius: 10px;width: 50%;color: white;background-color: black;border: solid gold;"><br><br>
       </form>
+    </section>
   </div>
     <div class="wrapper">
       <div class="container">
         <div class="sub-container">
           <!-- Budget -->
-          <div class="total-amount-container">
+          <div class="shopping-amount-container">
             <h2>Budget</h2>
             <p class="hide error" id="budget-error">
               Value cannot be empty or negative
@@ -63,6 +65,7 @@
               placeholder="Enter Title of Product"
             />
                       <button class ="submit" id="search Amount">Search</button>
+                      <p id="cost"></p>
           </div>
         </div>
         <!-- Output -->
@@ -85,9 +88,10 @@
       <div class="list">
         <h3>Expense List</h3>
         <div class="list-container" id="list"></div>
-      </div>
+              </div>
     </div>
     <!-- Script -->
        <script src="script.js"></script>
+       <p> id="price"</p>
   </body>
 </html>
