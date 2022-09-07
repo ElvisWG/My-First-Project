@@ -62,7 +62,7 @@ const init = () => {
     const input = document.querySelector('input#searchByName');
     console.log(input.value);
 
-    fetch(`https://dummyproducts-api.herokuapp.com/search?term=ProductNameHere`)
+    fetch("http://localhost:3000/Groceries")
     .then(response => response.json())
     .then(data => {
      // const crypto = document.querySelector('section#cryptoDetails h4');
