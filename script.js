@@ -24,7 +24,7 @@ totalAmountButton.addEventListener("click", () => {
     errorMessage.classList.add("hide");
     //Set User Budget
     amount.textContent = myAmount;
-    //Derive User Balance
+    //Calculate User Balance
     balanceValue.innerText = myAmount - expenditureValue.innerText;
     // Input Box
     totalAmount.value = "";
@@ -62,20 +62,20 @@ const init = () => {
     const input = document.querySelector('input#searchByName');
     console.log(input.value);
 
-    fetch("http://localhost:3000/Groceries")
+    fetch(`https://dummyproducts-api.herokuapp.com /api/v1/departments/:department_id=Groceries&vs_currency=kes${input.value}`)
     .then(response => response.json())
     .then(data => {
-     const price = document.querySelector('section#cryptoDetails h4');
-     // const cryptovalue = document.querySelector('section#cryptoDetails p');
+     const price = document.querySelector('section#productDetails h4');
+     const productvalue = document.querySelector('section#productDetails p');
       console.log(data);
-     // crypto.innerText = data.crypto;
-     // cryptovalue.innerText = data.cryptovalue;
+     price.innerText = data.price;
+     productvalue.innerText = data.productvalue;
     });
     
-      document.getElementById(searchAmount).onclick = displayPrice;
-      function displayPrice(){
-document.getElementById("cost").innerHTML = Prices();
-      }
-    });
-  }
+     // document.getElementById(searchAmount).onclick = displayPrice;
+    //  function displayPrice(){
+//document.getElementById("cost").innerHTML = Prices();
+      });
+    }
+  
 
