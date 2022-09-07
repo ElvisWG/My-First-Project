@@ -65,7 +65,7 @@ const init = () => {
     fetch("http://localhost:3000/Groceries")
     .then(response => response.json())
     .then(data => {
-     // const crypto = document.querySelector('section#cryptoDetails h4');
+     const price = document.querySelector('section#cryptoDetails h4');
      // const cryptovalue = document.querySelector('section#cryptoDetails p');
       console.log(data);
      // crypto.innerText = data.crypto;

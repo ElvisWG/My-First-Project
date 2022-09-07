@@ -26,7 +26,7 @@ Clone to this repo : git clone https://github.com/ElvisWG/My-First-Project.git
 
     HTML -was used to develop the structure of the pages.
     CSS - was used to style the User Interface.
-    Json- was used to modify user data
+    
 
 
 ## Copyright and License
