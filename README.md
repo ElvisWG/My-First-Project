@@ -6,7 +6,8 @@ Elvis Gatukui
 
 ## Project Description
 The motivation behind developing this line arose from the extreme spending on groceries which i did not budget for at any one given time and i felt the need to build such an app to help someone who might be in a similar position to be able to track all their expenditures on groceries and with this they will be able to manage their expenses and at the end of it all save.
-# The main MVP used in this app are; Userprofile,search and total amount features 
+## MVP Features
+The main MVP used in this app are; Userprofile,search and total amount features 
 
 
 

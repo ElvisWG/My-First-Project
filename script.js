@@ -62,14 +62,14 @@ const init = () => {
     const input = document.querySelector('input#searchByName');
     console.log(input.value);
 
-    fetch('"https://api.bestbuy.com/v1/Groceries/id.json?show=sku,name,salePrice&apiKey=YourAPIKey"')
+    fetch(`https://dummyproducts-api.herokuapp.com/search?term=ProductNameHere`)
     .then(response => response.json())
     .then(data => {
-      const crypto = document.querySelector('section#cryptoDetails h4');
-      const cryptovalue = document.querySelector('section#cryptoDetails p');
+     // const crypto = document.querySelector('section#cryptoDetails h4');
+     // const cryptovalue = document.querySelector('section#cryptoDetails p');
       console.log(data);
-      crypto.innerText = data.crypto;
-      cryptovalue.innerText = data.cryptovalue;
+     // crypto.innerText = data.crypto;
+     // cryptovalue.innerText = data.cryptovalue;
     });
     
       document.getElementById(searchAmount).onclick = displayPrice;
