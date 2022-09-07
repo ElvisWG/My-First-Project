@@ -2,7 +2,7 @@ let totalAmount = document.getElementById("total-amount");
 let shoppingAmount = document.getElementById("shopping-amount");
 const searchAmount = document.getElementById("search-amount");
 const totalAmountButton = document.getElementById("total-amount-button");
-const searchAmountButton = document.getElementById("search-amount-button");
+const searchAmountButton = document.querySelector("search-amount-button");
 const productTitle = document.getElementById("product-title");
 const errorMessage = document.getElementById("budget-error");
 const productTitleError = document.getElementById("product-title-error");
@@ -76,6 +76,8 @@ const init = () => {
     //  function displayPrice(){
 //document.getElementById("cost").innerHTML = Prices();
       });
+      
     }
+
   
 
