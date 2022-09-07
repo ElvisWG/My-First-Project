@@ -5,7 +5,7 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  background-color: creamwhite;
+  background-color: #f7f9fd;
 }
 .wrapper {
   width: 90%;
@@ -32,7 +32,7 @@ body {
   align-items: center;
 }
 .wrapper h3 {
-  color: blue;
+  color: #363d55;
   font-weight: 500;
   margin-bottom: 0.6em;
 }
@@ -42,24 +42,24 @@ body {
   padding: 0.6em 0.3em;
   border: 1px solid #d0d0d0;
   border-radius: 0.3em;
-  color: silver;
+  color: #414a67;
   outline: none;
   font-weight: 400;
   margin-bottom: 0.6em;
 }
 .container input:focus {
-  border-color: red;
+  border-color: #587ef4;
 }
 .total-amount-container,
 .user-amount-container {
-  background-color: whitesmoke;
+  background-color: #ffffff;
   padding: 1.25em 0.9em;
   border-radius: 0.3em;
   box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.06);
 }
 .output-container {
-  background-color: coral;
-  color: blanchedalmond;
+  background-color: #587ef4;
+  color: #ffffff;
   border-radius: 0.3em;
   box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.06);
   margin: 2em 0;
@@ -78,7 +78,7 @@ body {
 .submit {
   font-size: 1em;
   margin-top: 0.8em;
-  background-color: black;
+  background-color: #587ef4;
   border: none;
   outline: none;
   color: #ffffff;
@@ -94,7 +94,7 @@ body {
 }
 .sublist-content {
   width: 100%;
-  border-left: 0.3em solid greenyellow;
+  border-left: 0.3em solid #587ef4;
   margin-bottom: 0.6em;
   padding: 0.5em 1em;
   display: grid;

@@ -1,7 +1,8 @@
 let totalAmount = document.getElementById("total-amount");
-let userAmount = document.getElementById("user-amount");
-const checkAmountButton = document.getElementById("check-amount");
+let shoppingAmount = document.getElementById("shopping-amount");
+const searchAmount = document.getElementById("search-amount");
 const totalAmountButton = document.getElementById("total-amount-button");
+const searchAmountButton = document.getElementById("search-amount-button");
 const productTitle = document.getElementById("product-title");
 const errorMessage = document.getElementById("budget-error");
 const productTitleError = document.getElementById("product-title-error");
@@ -10,109 +11,84 @@ const amount = document.getElementById("amount");
 const expenditureValue = document.getElementById("expenditure-value");
 const balanceValue = document.getElementById("balance-amount");
 const list = document.getElementById("list");
-let tempAmount = 0;
+let myAmount = 0;
+
 
 //Set Budget Part
 totalAmountButton.addEventListener("click", () => {
-  tempAmount = totalAmount.value;
+  myAmount = totalAmount.value;
   //empty or negative input
-  if (tempAmount === "" || tempAmount < 0) {
+  if (myAmount === "" || myAmount < 0) {
     errorMessage.classList.remove("hide");
   } else {
     errorMessage.classList.add("hide");
-    //Set Budget
-    amount.innerHTML = tempAmount;
-    //Set Balance
-    balanceValue.innerText = tempAmount - expenditureValue.innerText;
-    //Clear Input Box
+    //Set User Budget
+    amount.textContent = myAmount;
+    //Derive User Balance
+    balanceValue.innerText = myAmount - expenditureValue.innerText;
+    // Input Box
     totalAmount.value = "";
   }
 });
 
 //Function To Disable Edit and Delete Button
-const disableButtons = (bool) => {
-  let editButtons = document.getElementsByClassName("edit");
-  Array.from(editButtons).forEach((element) => {
-    element.disabled = bool;
+const disableButtons = (boolean) => {
+  let editButton = document.getElementsByClassName("edit");
+  Array.from(editButton).forEach((element) => {
+    element.disabled = boolean;
   });
-};
-
-//Function To Modify List Elements
-const modifyElement = (element, edit = false) => {
-  let parentDiv = element.parentElement;
-  let currentBalance = balanceValue.innerText;
-  let currentExpense = expenditureValue.innerText;
-  let parentAmount = parentDiv.querySelector(".amount").innerText;
-  if (edit) {
-    let parentText = parentDiv.querySelector(".product").innerText;
-    productTitle.value = parentText;
-    userAmount.value = parentAmount;
-    disableButtons(true);
-  }
-  balanceValue.innerText = parseInt(currentBalance) + parseInt(parentAmount);
-  expenditureValue.innerText =
-    parseInt(currentExpense) - parseInt(parentAmount);
-  parentDiv.remove();
 };
 
 //Function To Create List
-const listCreator = (expenseName, expenseValue) => {
-  let sublistContent = document.createElement("div");
-  sublistContent.classList.add("sublist-content", "flex-space");
-  list.appendChild(sublistContent);
-  sublistContent.innerHTML = `<p class="product">${expenseName}</p><p class="amount">${expenseValue}</p>`;
+const grocerylist = (itemName, itemValue) => {
+  let grocerylistContent = document.createElement("div");
+    list.appendChild(grocerylistContent);
+  grocerylistContent.innerText = `<p class="product">${itemName}</p><p class="amount">${itemValue}</p>`;
   let editButton = document.createElement("button");
-  editButton.classList.add("fa-solid", "fa-pen-to-square", "edit");
-  editButton.style.fontSize = "1.2em";
-  editButton.addEventListener("click", () => {
+    editButton.addEventListener("click", () => {
     modifyElement(editButton, true);
   });
   let deleteButton = document.createElement("button");
-  deleteButton.classList.add("fa-solid", "fa-trash-can", "delete");
-  deleteButton.style.fontSize = "1.2em";
-  deleteButton.addEventListener("click", () => {
+    deleteButton.addEventListener("click", () => {
     modifyElement(deleteButton);
   });
-  sublistContent.appendChild(editButton);
-  sublistContent.appendChild(deleteButton);
-  document.getElementById("list").appendChild(sublistContent);
+  grocerylistContent.appendChild(editButton);
+ grocerylistContent.appendChild(deleteButton);
+  document.getElementById("list").appendChild(grocerylistContent);
 };
-
-//Function To Add Expenses
-checkAmountButton.addEventListener("click", () => {
-  //empty checks
-  if (!userAmount.value || !productTitle.value) {
-    productTitleError.classList.remove("hide");
-    return false;
-  }
-  //Enable buttons
-  disableButtons(false);
-  //Expense
-  let expenditure = parseInt(userAmount.value);
-  //Total expense (existing + new)
-  let sum = parseInt(expenditureValue.innerText) + expenditure;
-  expenditureValue.innerText = sum;
-  //Total balance(budget - total expense)
-  const totalBalance = tempAmount - sum;
-  balanceValue.innerText = totalBalance;
-  //Create list
-  listCreator(productTitle.value, userAmount.value);
-  //Empty inputs
-  productTitle.value = "";
-  userAmount.value = "";
-},
-
-fetch('https://dummyproducts-api.herokuapp.com/api/v1/products/search?term=ProductNameHere/products?apikey=xxxxxxxxx', {
-method : 'POST',
-headers :{
-  'Content-Type': 'application/son',
-  Accept : 'application/json'
-},
-body : JSON.stringify({
-
-})
+{
+$(document).ready(function(){
+  $.ajax({
+    url: 'https://www.fruityvice.com/api/fruit/all',
+    type:"GET",
+    success:function(result){
+      console.log(result)
+    },
+    error:function(err){
+      console.log(err);
+    }
   })
-  .then(resp => resp.json)
-  .then(x => {})
+})
+}
 
-});
+getGroceries().then(response=>{
+  console.log(response);
+})
+let userData = {
+  "id" : 'user1234',
+  "name" : 'John',
+  "email" : 'user1234@gmail.com'
+}
+searchAmountButton.addEventListener("click", myFunction);
+function myFunction(){
+  alert("i was clicked!")
+}
+ // index.js
+user.profile = () => {
+  const data = { users: [] }
+  // Create 1000 users
+  for (let i = 0; i < 1000; i++) {
+    data.users.push({ id: i, name: `user${i}` })
+  }
+  return data
+}

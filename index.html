@@ -1,17 +1,46 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width">
-    <title>Grocery Budget App</title>
-      <link rel="stylesheet" href="style.css" />
+      <title>Budget App</title>
+    
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!--creating a user profile to either login or register-->
+    <div style="background-color:white;margin: 1%;width: 15%;padding: 1%;float:left;">
+      <form method="post">
+          <div style="font-size: 20px;margin: 1%;color: black;">Login</div>
+          <div>
+              <label for="uname" style="font-size: 10px;color: black;"><b>Username</b></label>
+              <input type="text" name="default-Username" style="height:2%;padding: 1%;border: solid thin royalblue;"><br><br>
+              <label for="psw" style="font-size: 10px;color: black;"><b>Password</b></label>
+              <input type="password" name="default-Password" style="height:2%;border: solid thin red;"><br><br>
+          </div>
+          <input type="submit" value="Login" style="border-radius: 10px;padding:1%;width: 50%;color: #909090;background-color: lightblue;border: none;"><br><br>
+      </form>
+  </div>
+  <div style="background-color:grey;margin: 1%;width: 15%;padding: 1%;float:left;">
+      <form method="post">
+          <div style="font-size: 20px;margin: 1%;color: white;">Register</div>
+          <div>
+              <label for="usrname" style="font-size: 10px;margin: 0.5%;color: black;"><b>Username</b></label>
+              <input type="text" name="Default-Username" style="height:4%;border-radius: 10px;padding: 1%;border: solid thin green;"><br><br>
+              <label for="paswrd" style="font-size: 10px;margin: 0.5%;color: black;"><b>Password</b></label>
+              <input type="password" name="Default-Password" style="height:4%;border-radius: 10px;padding: 1%;border: solid thin green;"><br><br>
+              <label for="psw" style="font-size: 10px;margin: 0.5%;color: black;"><b>Repeat Password</b></label>
+              <input type="password" name="Morania-Password" style="height:4%;border-radius: 10px;padding: 1%;border: solid thin #aaa;"><br><br>
+          </div>
+          <input type="submit" value="Login" style="border-radius: 10px;padding:1%;width: 50%;color: #909090;background-color: lightblue;border: none;"><br><br>
+      </form>
+  </div>
     <div class="wrapper">
       <div class="container">
         <div class="sub-container">
           <!-- Budget -->
           <div class="total-amount-container">
-            <h3>Grocery Budget</h3>
+            <h2>Budget</h2>
             <p class="hide error" id="budget-error">
+              Value cannot be empty or negative
             </p>
             <input
               type="number"
@@ -22,19 +51,18 @@
           </div>
 
           <!-- Expenditure -->
-          <div class="user-amount-container">
-            <h3>Expenses</h3>
+          <div class="shopping-amount-container">
+            <h2>Expenses</h2>
             <p class="hide error" id="product-title-error">
               Values cannot be empty
             </p>
             <input
               type="text"
-              class="product-name"
-              id="product-name"
-              placeholder="Enter Name of Product"
+              class="product-title"
+              id="product-title"
+              placeholder="Enter Title of Product"
             />
-            
-            <button class="submit" id="Search-Item">Search Item</button>
+                      <button class ="submit" id="search Amount">Search</button>
           </div>
         </div>
         <!-- Output -->
@@ -55,11 +83,12 @@
       </div>
       <!-- List -->
       <div class="list">
-        <h3>Total Expense List</h3>
+        <h3>Expense List</h3>
         <div class="list-container" id="list"></div>
       </div>
     </div>
     <!-- Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
