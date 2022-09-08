@@ -52,7 +52,7 @@ body {
 .container input:focus {
   border-color: #587ef4;
 }
-.shopping-amount-container,
+.total-amount-container,
 .user-amount-container {
   background-color: #ffffff;
   padding: 1.25em 0.9em;
