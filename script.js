@@ -1,8 +1,7 @@
 let totalAmount = document.getElementById("total-amount");
-let shoppingAmount = document.getElementById("shopping-amount");
-const searchAmount = document.getElementById("search-amount");
-const totalAmountButton = document.getElementById("total-amount-button");
-const searchAmountButton = document.querySelector("search-amount-button");
+let userAmount = document.getElementById("user-amount");
+const checkAmountButton = document.getElementById("check-amount");
+const totalAmountButton = document.querySelector("search-amount-button");
 const productTitle = document.getElementById("product-title");
 const errorMessage = document.getElementById("budget-error");
 const productTitleError = document.getElementById("product-title-error");
@@ -16,7 +15,7 @@ let myAmount = 0;
 
 //Set Budget Part
 totalAmountButton.addEventListener("click", () => {
-  myAmount = totalAmount.value;
+  myAmount = userAmount.value;
   //empty or negative input
   if (myAmount === "" || myAmount < 0) {
     errorMessage.classList.remove("hide");
@@ -38,12 +37,29 @@ const disableButtons = (boolean) => {
     element.disabled = boolean;
   });
 };
+//Function To Modify List Elements
+const modifyElement = (element, edit = false) => {
+  let parentDiv = element.parentElement;
+  let currentBalance = balanceValue.innerText;
+  let currentExpense = expenditureValue.innerText;
+  let parentAmount = parentDiv.querySelector(".amount").innerText;
+  if (edit) {
+    let parentText = parentDiv.querySelector(".product").innerText;
+    productTitle.value = parentText;
+    userAmount.value = parentAmount;
+    disableButtons(true);
+  }
+  balanceValue.innerText = parseInt(currentBalance) + parseInt(parentAmount);
+  expenditureValue.innerText =
+    parseInt(currentExpense) - parseInt(parentAmount);
+  parentDiv.remove();
+};
 
 //Function To Create List
 const grocerylist = (itemName, itemValue) => {
   let grocerylistContent = document.createElement("div");
     list.appendChild(grocerylistContent);
-  grocerylistContent.innerText = `<p class="product">${itemName}</p><p class="amount">${itemValue}</p>`;
+  grocerylistContent.innerText = `<p class="product">${expenseName}</p><p class="amount">${expenseValue}</p>`;
   let editButton = document.createElement("button");
     editButton.addEventListener("click", () => {
     modifyElement(editButton, true);
@@ -54,15 +70,26 @@ const grocerylist = (itemName, itemValue) => {
   });
   grocerylistContent.appendChild(editButton);
  grocerylistContent.appendChild(deleteButton);
-  document.getElementById("list").appendChild(grocerylistContent);
+  document.getElementById("list").appendChild(sublistContent);
+
 };
+//Function To Add Expenses
+checkAmountButton.addEventListener("click", () => {
+  //empty checks
+  if (!userAmount.value || !productTitle.value) {
+    productTitleError.classList.remove("hide");
+    return false;
+  }
+})
+//Fetch data from the API
 const init = () => {
   inputForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const input = document.querySelector('input#searchByName');
     console.log(input.value);
+    {
 
-    fetch(`https://dummyproducts-api.herokuapp.com /api/v1/departments/:department_id=Groceries&vs_currency=kes${input.value}`)
+    fetch('https://www.fruityvice.com/api/fruit/all')
     .then(response => response.json())
     .then(data => {
      const price = document.querySelector('section#productDetails h4');
@@ -70,14 +97,46 @@ const init = () => {
       console.log(data);
      price.innerText = data.price;
      productvalue.innerText = data.productvalue;
-    });
     
-     // document.getElementById(searchAmount).onclick = displayPrice;
-    //  function displayPrice(){
-//document.getElementById("cost").innerHTML = Prices();
-      });
-      
+    });
+  }
+  function priceLookup(items, name){
+    let result = 0;
+    for (i = 0; i < items.length; i++){
+      if (name == items[i].itemName){
+      (result =+ items[i].price)
+      } else { result = "No item found with that name"
+         }
+     }
+     return result;
     }
+   });
+  }
+  const data = { username: 'example' };
+
+fetch('http://localhost:3000/profile', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+});
+}
+
+
+
+
+
+
+
 
   
 

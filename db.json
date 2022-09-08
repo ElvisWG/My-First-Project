@@ -42,6 +42,17 @@
         "price": 30
       }
 
-    ]
+    ],
+    
+      "Profile": [
+        {
+        "userName": "example1234",
+        "email": "example1234@gmail.com",
+        "password": "password1234"
+
+        }
+
+      ]
+    }
   
-  }
+  
