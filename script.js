@@ -86,7 +86,7 @@ checkAmountButton.addEventListener("click", () => {
     return false;
   }
   //Enable buttons
-  disableButtons(false);
+  disableButtons();
   //Expense
   let expenditure = parseInt(userAmount.value);
   //Total expense (existing + new)
@@ -103,59 +103,45 @@ checkAmountButton.addEventListener("click", () => {
 });
 //Fetch data from the API
 const init = () => {
+  const inputForm = document.querySelector('form')
+
   inputForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const input = document.querySelector('input#searchByName');
-    console.log(input.value);
-    {
-
-    fetch('https://www.fruityvice.com/api/fruit/all')
+    
+    fetch(`https://www.fruityvice.com/api/fruit/all${input.value}`)
     .then(response => response.json())
     .then(data => {
-     const price = document.querySelector('section#productDetails h4');
-     const productvalue = document.querySelector('section#productDetails p');
+       const price = document.querySelector('section#expenses h3');
+     const productvalue = document.querySelector('section#expenses p');
       console.log(data);
      price.innerText = data.price;
      productvalue.innerText = data.productvalue;
     
     });
-  }
-  function priceLookup(items, name){
-    let result = 0;
-    for (i = 0; i < items.length; i++){
-      if (name == items[i].itemName){
-      (result =+ items[i].price)
-      } else { result = "No item found with that name"
-         }
-     }
-     return result;
-    }
-   });
-  }
-  const data = { username: 'example' };
-
-fetch('http://localhost:3000/profile', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(data),
-})
-  .then((response) => response.json())
-  .then((data) => {
-    console.log('Success:', data);
-  })
-  .catch((error) => {
-    console.error('Error:', error);
   });
-
-
-
-
-
-
-
-
-
+  }
+   document.addEventListener('DOMContentLoaded',init);
   
+  const data =  () => {
+    const dataForm = document.querySelector('form')
+
+    dataForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const dataInput = document.querySelector('input#usrname');
+
+      fetch(`http://localhost:3000/profile/${input.value}`)
+      .then (resp => resp.json())
+      .then (data => {
+        const name = document.querySelector(usrname.parentDiv);
+        const password = document.querySelector(password.classList);
+
+        name.innerText = data.name;
+        password.innerText = data.password;
+      })
+    })
+    
+
+  }
 
